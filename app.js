@@ -29,12 +29,18 @@ const friendData = [
 ];
 
 addFriendButton.addEventListener('click', () => {
-    const friendName = friendInputEl.value;
+    // const friendName = friendInputEl.value;
 
     const newFriend = {
-        name: friendName,
+        name: friendInputEl.value,
         satisfaction: 1
     };
+
+    if (newFriend.name === '') {
+        const randomFriend = ['Joe', 'Deb', 'Bre', 'Zak', 'Ted', 'Jen'];
+        let i = Math.floor(Math.random() * 5);
+        newFriend.name = randomFriend[i];
+    }
     friendData.push(newFriend);
 
     friendInputEl.value = '';
@@ -61,6 +67,8 @@ function displayFriends() {
             if (friend.satisfaction < 3 && mushroomCount > 0) {
                 friend.satisfaction++;
                 mushroomCount--;
+            } else if (mushroomCount === 0) {
+                alert('Go forage for another mushroom!');
             }
             displayFriends();
             displayMushrooms();
