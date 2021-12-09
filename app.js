@@ -18,7 +18,7 @@ const friendData = [
     },
     {
         name: 'Sarah',
-        satisfaction: 3
+        satisfaction: 1
     },
     {
         name: 'Missael',
@@ -26,7 +26,7 @@ const friendData = [
     },
     {
         name: 'Soraya',
-        satisfaction: 2
+        satisfaction: 1
     },
 ];
 
@@ -70,14 +70,15 @@ function displayFriends() {
     // for each friend in state . . .
     for (let friend of friendData) {
         const friendEl = renderFriend(friend);
-        console.log(friendEl);
+        // console.log(friendEl);
 
         friendEl.addEventListener('click', () => {
             if (friend.satisfaction < 3 && mushroomCount > 0) {
                 friend.satisfaction++;
                 mushroomCount--;
             }
-            
+            // console.log(`satifaction: ${friend.satisfaction}`, `mushCount: ${mushroomCount}`);
+            displayFriends();
         });
 
         friendsEl.append(friendEl);
