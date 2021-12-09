@@ -1,4 +1,5 @@
 import { renderMushroom, renderFriend } from './render-utils.js';
+import { findFriendByName } from './data-utils.js';
 
 const friendsEl = document.querySelector('.friends');
 const friendInputEl = document.getElementById('friend-input');
@@ -27,12 +28,15 @@ const friendData = [
     },
 ];
 
+console.log(findFriendByName('Missael', friendData));
+
+
 addFriendButton.addEventListener('click', () => {
     // const friendName = friendInputEl.value;
 
     const newFriend = {
         name: friendInputEl.value,
-        satisfaction: 1
+        satisfaction: 1 
     };
 
     if (newFriend.name === '') {
